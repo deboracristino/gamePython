@@ -3,7 +3,8 @@
 import sys
 
 import pygame
-
+from pygame import Surface, Rect
+from pygame.font import Font
 
 from code.Const import COLOR_WHITE, WIN_HEIGHT
 from code.Entity import Entity
@@ -12,12 +13,15 @@ from code.EntityFactory import EntityFactory
 
 class Level:
     def __init__(self, window, name, game_mode):
+        self.timeout = 20000
         self.window = window
         self.name = name
+        print('name', self.name)
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1bg'))
-        self.timeout = 20000
+        player = EntityFactory.get_entity('Player')
+        self.entity_list.append(player)
 
 
     def run(self, ):
@@ -40,7 +44,8 @@ class Level:
             pygame.display.flip()
             pass
 
-    def level_text(self, size, text, color, position):
-        font = pygame.font.Font(None, size)  # None = fonte padrão do sistema
-        text_surface = font.render(text, True, color)
-        self.window.blit(text_surface, position)
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+        text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
+        text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
+        self.window.blit(source=text_surf, dest=text_rect)
