@@ -12,12 +12,11 @@ from code.EntityFactory import EntityFactory
 
 
 class Level:
-    def __init__(self, window, name, game_mode):
+    def __init__(self, window, name, menu_option):
         self.timeout = 20000
         self.window = window
         self.name = name
-        print('name', self.name)
-        self.game_mode = game_mode
+        self.menu_option = menu_option
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1bg'))
         player = EntityFactory.get_entity('Player')
