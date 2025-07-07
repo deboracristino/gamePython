@@ -4,7 +4,7 @@ import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from code.const import WIN_WIDTH, COLOR_BLUE, MENU_OPTION, COLOR_WHITE
+from code.const import WIN_WIDTH, COLOR_BLUE, MENU_OPTION, COLOR_WHITE, COLOR_PURPLE
 
 
 class Menu:
@@ -13,7 +13,8 @@ class Menu:
         self.surf = pygame.image.load('./asset/MenuBg.png')
         self.rect = self.surf.get_rect()
 
-    def run(self, ):
+    def run(self,):
+        menu_option = 0
         pygame.mixer_music.load('./asset/Menu.mp3')
         pygame.mixer_music.play(-1)
         while True:
@@ -23,7 +24,11 @@ class Menu:
 
 
             for i in range(len(MENU_OPTION)):
-                self.menu_text(40, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 180 + 30 * i))
+               if i == menu_option:
+                   self.menu_text(40, MENU_OPTION[i], COLOR_PURPLE, ((WIN_WIDTH / 2), 180 + 30 * i))
+               else:
+                   self.menu_text(40, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 180 + 30 * i))
+
 
             pygame.display.flip()
 
