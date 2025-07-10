@@ -8,10 +8,10 @@ from code.EntityFactory import EntityFactory
 
 class Level:
 
-    def __init__(self, window, name, menu_option):
+    def __init__(self, window, name, game_mode):
         self.window = window
         self.name = name
-        self.menu_option  = menu_option
+        self.game_mode  = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1bg'))
         self.timeout = 0
@@ -26,5 +26,5 @@ class Level:
                 self.window.blit(source= ent.surf, dest=ent.rect)
                 ent.move()
             pygame.display.flip()
-        pass
+            pass
 
