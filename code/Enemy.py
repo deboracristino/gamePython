@@ -1,12 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-from Entity import Entity
+from code.Const import WIN_WIDTH
+from code.Entity import Entity
 
 
 class Enemy(Entity):
-    def __init__(self):
-        pass
+
+    def __init__(self, name: str, position: tuple[int, int]):
+       super().__init__(name, position)
 
     def move(self, ):
-        pass
+        self.rect.centerx -= 1
+        if self.rect.right <= 0:
+            self.rect.left = WIN_WIDTH
