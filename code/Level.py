@@ -9,7 +9,7 @@ from pygame import Surface, Rect
 from code.Const import COLOR_WHITE, WIN_HEIGHT, EVENT_ENEMY, SPAWN_TIME
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
-#from code.EntityMediator import EntityMediator
+from code.EntityMediator import EntityMediator
 
 
 class Level:
@@ -43,9 +43,15 @@ class Level:
                     self.entity_list.append(EntityFactory.get_entity('Enemy'))
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (10, 5))
+            player = next((e for e in self.entity_list if e.__class__.__name__ == "Player"), None)
+            if player:
+                self.level_text(14, f'Score: {player.score}', COLOR_WHITE, (10, 30))
+
             pygame.display.flip()
-            #EntityMediator.verify_collision(entity_list=self.entity_list)
-            #EntityMediator.verify_health(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+
+
         pass
 
 
