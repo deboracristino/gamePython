@@ -13,9 +13,9 @@ class Player(Entity):
 
     def move(self):
         pressed_key = pygame.key.get_pressed()
-        if pressed_key[pygame.K_UP] and self.rect.top > 0.:
+        if pressed_key[pygame.K_UP] and self.rect.top > -40:
             self.rect.centery -= 1
-        if pressed_key[pygame.K_DOWN] and self.rect.bottom < WIN_HEIGHT:
+        if pressed_key[pygame.K_DOWN] and self.rect.bottom < WIN_HEIGHT + 60:
             self.rect.centery += 1
         if pressed_key[pygame.K_LEFT] and self.rect.left > 0:
             self.rect.centerx -= 1

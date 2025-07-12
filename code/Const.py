@@ -8,6 +8,17 @@ COLOR_PURPLE = (175, 71, 210)
 
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
+ENTITY_HEALTH = {
+    'Level1bg0': 999,
+    'Level1bg1': 999,
+    'Level1bg2': 999,
+    'Level1bg3': 999,
+    'Level1bg4': 999,
+    'Level1bg5': 999,
+    'Level1bg6': 999,
+    'Player': 300,
+    'Enemy': 50,
+}
 # M
 MENU_OPTION = ('NEW GAME',
                'EXIT')
